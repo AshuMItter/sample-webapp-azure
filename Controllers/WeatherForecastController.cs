@@ -12,6 +12,13 @@ namespace sample_webapp_azure.Controllers
         //    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         //];
 
+        [HttpGet]
+        [Route("hello")]
+        public string HelloBrother()
+        {
+            return "Hello World!";
+        }
+
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<Demographics> Get()
         {
