@@ -19,6 +19,29 @@ namespace sample_webapp_azure.Controllers
             return "Hello World!";
         }
 
+        // generate one endpoint to receive demographics data and return it as response
+
+        // generate a DTO for Demographics
+        public class Demographics
+        {
+            public int PersonId { get; set; }
+            public string Name { get; set; }
+            public string Address { get; set; }
+            public DateOnly DateOfBirth { get; set; }
+            public string AndSoOn { get; set; }
+        }
+
+        
+
+        [HttpPost("demographics")]
+        public ActionResult<Demographics> ReceiveDemographics([FromBody] Demographics demographics)
+        {
+            if (demographics is null) 
+                return BadRequest("Request body is required.");
+
+            return Ok(demographics);
+        }
+
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<Demographics> Get()
         {
