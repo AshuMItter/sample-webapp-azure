@@ -27,6 +27,16 @@ namespace sample_webapp_azure
 
 
             app.MapControllers();
+            app.MapGet("/", () => """
+            Hello World! from sample-webapp-azure :)
+            GitHub: CI/CD pipeline for Azure Web App using GitHub Actions
+            Azure AppService : Hosting me in F1 Free tier
+            Vertical Scaling : Allowed 
+            Horizontal Scaling : Allowed
+            AppService Plan : F1 Free Tier (CPU 60 minutes/day , Storage 1 GB, Maximum Scale Instance 1 )
+            
+
+            """);
 
             app.Run();
         }
