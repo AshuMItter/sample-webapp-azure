@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - sample-demo-webapp
+name: Build and deploy ASP.Net Core app to Azure Web App - tea-web-app
 
 on:
   push:
@@ -51,15 +51,15 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_4F729CC204774B41B0D95BE0925C5A8E }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_00CA881C511143DC9CE2F163BF2DD776 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3079501B2FBA41CF9F66288FBE5ED5FD }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_726F572017444AB98C1E6C742CFE66BD }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_CCB6AAE5B6AA4AA1AA51DF00D332AF1E }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A7CEE25FCE6A48A5B75ED8EB4690ACBA }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'sample-demo-webapp'
+          app-name: 'tea-web-app'
           slot-name: 'Production'
           package: .
           
