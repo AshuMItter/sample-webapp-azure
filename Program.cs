@@ -33,9 +33,8 @@ namespace sample_webapp_azure
             Azure AppService : Hosting me in F1 Free tier
             Vertical Scaling : Allowed 
             Horizontal Scaling : Allowed
-            Slot : Staging
-            AppService Plan : F1 Free Tier (CPU 60 minutes/day , Storage 1 GB, Maximum Scale Instance 0 )
-            
+            Slot : Staging 
+            AppService Plan : S1 Standard (1 Core, 1.75 GB RAM)
 
             """);
 
