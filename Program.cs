@@ -27,7 +27,7 @@ namespace sample_webapp_azure
 
 
             app.MapControllers();
-            app.MapGet("/", () => """
+            app.MapGet("/", () => $"""
             Hello World! from sample-webapp-azure :)
             GitHub: CI/CD pipeline for Azure Web App using GitHub Actions
             Azure AppService : Hosting me in F1 Free tier
