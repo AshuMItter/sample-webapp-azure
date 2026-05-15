@@ -8,7 +8,9 @@ namespace sample_webapp_azure.Controllers
     [Route("api/[controller]")]
     public class EcommerceController : ControllerBase
     {
-        private readonly IDistributedCache _cache;
+      /// <summary>
+      ///  private readonly IDistributedCache _cache;
+      /// </summary>
         private readonly ILogger<EcommerceController> _logger;
         private readonly IConfiguration _configuration;
 
@@ -16,11 +18,11 @@ namespace sample_webapp_azure.Controllers
         private static readonly List<Order> _orderDb = new();
 
         public EcommerceController(
-            IDistributedCache cache,
+           // IDistributedCache cache,
             ILogger<EcommerceController> logger,
             IConfiguration configuration)
         {
-            _cache = cache;
+           // _cache = cache;
             _logger = logger;
             _configuration = configuration;
         }
@@ -74,10 +76,10 @@ namespace sample_webapp_azure.Controllers
             // Cache for quick retrieval during spikes
             var cacheKey = $"order:{order.OrderId}";
             var serializedOrder = JsonSerializer.Serialize(order);
-            await _cache.SetStringAsync(cacheKey, serializedOrder, new DistributedCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
-            });
+            //await _cache.SetStringAsync(cacheKey, serializedOrder, new DistributedCacheEntryOptions
+            //{
+            //    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(30)
+            //});
 
             // Reduce inventory (simulated)
             await UpdateInventoryAsync(request.ProductId, request.Quantity);
@@ -102,13 +104,13 @@ namespace sample_webapp_azure.Controllers
 
             // Check cache first (reduces DB pressure during traffic spikes)
             var cacheKey = $"order:{orderId}";
-            var cachedOrder = await _cache.GetStringAsync(cacheKey);
+          //  var cachedOrder = await _cache.GetStringAsync(cacheKey);
 
-            if (!string.IsNullOrEmpty(cachedOrder))
-            {
-                var order = JsonSerializer.Deserialize<Order>(cachedOrder);
-                return Ok(order);
-            }
+            //if (!string.IsNullOrEmpty(cachedOrder))
+            //{
+            //    var order = JsonSerializer.Deserialize<Order>(cachedOrder);
+            //    return Ok(order);
+            //}
 
             // Fallback to database
             var record = _orderDb.FirstOrDefault(o => o.OrderId == orderId);
@@ -116,7 +118,7 @@ namespace sample_webapp_azure.Controllers
                 return NotFound($"No order found for OrderId: {orderId}");
 
             // Refresh cache
-            await _cache.SetStringAsync(cacheKey, JsonSerializer.Serialize(record));
+           // await _cache.SetStringAsync(cacheKey, JsonSerializer.Serialize(record));
 
             return Ok(record);
         }

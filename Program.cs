@@ -19,6 +19,7 @@ namespace sample_webapp_azure
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseDeveloperExceptionPage(); // This g
             }
 
             app.UseHttpsRedirection();
