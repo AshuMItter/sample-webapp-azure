@@ -34,7 +34,7 @@ namespace sample_webapp_azure
             Vertical Scaling : Allowed 
             Horizontal Scaling : Allowed
             AppService Plan : F1 Free Tier (CPU 60 minutes/day , Storage 1 GB, Maximum Scale Instance 0 )
-            
+            ${builder.Configuration["Demographics:validateUrl"]}
 
             """);
 
