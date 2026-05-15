@@ -35,6 +35,7 @@ namespace sample_webapp_azure
             Horizontal Scaling : Allowed
             Slot : Staging 
             AppService Plan : S1 Standard (1 Core, 1.75 GB RAM)
+            ${builder.Configuration["Demographics:validateUrl"]}
 
             """);
 
